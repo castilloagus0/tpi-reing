@@ -1,0 +1,619 @@
+:root {
+  --navy: #06182b;
+  --ink: #071a36;
+  --blue: #1765db;
+  --paper: #fffefa;
+  --canvas: #fbfaf7;
+  --line: #e8e7e2;
+}
+body {
+  background: var(--canvas);
+  color: var(--ink);
+}
+#root {
+  background: var(--canvas);
+}
+.navbar {
+  height: 96px;
+  padding: 0 4.3%;
+  gap: 48px;
+  border-bottom: 1px solid #eeeae3;
+  background: rgba(255, 255, 255, 0.94);
+}
+.logo {
+  font:
+    700 39px/1 Arial,
+    sans-serif;
+  letter-spacing: -2.1px;
+  color: #06182b;
+}
+.navbar nav {
+  gap: 34px;
+}
+.navbar nav button,
+.plain-icon,
+.account {
+  font-size: 15px;
+  color: #132039;
+}
+.navbar nav button.active {
+  border: 0;
+  color: #132039;
+  font-weight: 500;
+}
+.nav-actions {
+  gap: 18px;
+}
+.plain-icon {
+  font-size: 29px;
+}
+.nav-actions i {
+  height: 30px;
+}
+.account .icon {
+  display: none;
+}
+.primary {
+  background: #06182b;
+  border-color: #06182b;
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 14px 25px;
+}
+.primary.small {
+  font-size: 14px;
+  padding: 14px 27px;
+  border-radius: 16px;
+}
+.home-hero {
+  height: 545px;
+  background-position: center;
+  background-size: cover;
+}
+.hero-shade {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 251, 246, 0.98) 0%,
+    rgba(255, 250, 245, 0.9) 28%,
+    rgba(255, 250, 245, 0.26) 58%,
+    rgba(255, 250, 245, 0) 76%
+  );
+}
+.hero-copy {
+  padding: 60px 4.6%;
+}
+.eyebrow {
+  color: #0f2038 !important;
+  font-size: 15px !important;
+  letter-spacing: 1.6px !important;
+}
+.hero-copy h1 {
+  font:
+    700 68px/0.99 Arial,
+    sans-serif;
+  letter-spacing: -3.8px;
+  color: #071a36;
+  margin: 21px 0;
+}
+.hero-copy .lead {
+  font-size: 20px;
+  line-height: 1.3;
+  max-width: 690px;
+  color: #1e2a3e;
+}
+.hero-points {
+  display: none;
+}
+.home-main {
+  max-width: 1420px;
+  padding: 0 4.5%;
+}
+.search-card {
+  margin-top: -84px;
+  border-radius: 20px;
+  padding: 0 16px 17px;
+  box-shadow: 0 19px 40px rgba(21, 28, 40, 0.16);
+}
+.search-tabs {
+  height: 70px;
+  gap: 0;
+}
+.search-tabs button {
+  font-size: 16px;
+  padding: 0 35px;
+  color: #263348;
+}
+.search-tabs button.selected {
+  color: #1463dc;
+  border-color: #1463dc;
+}
+.search-controls {
+  grid-template-columns: 1fr 1fr 1.15fr 1.1fr 84px;
+  gap: 12px;
+}
+.home-main .search-field:last-of-type {
+  display: none;
+}
+.search-field {
+  height: 82px;
+  border-radius: 13px;
+  padding: 0 20px;
+}
+.search-field > .icon {
+  font-size: 26px;
+  color: #263348;
+}
+.search-field small {
+  font-size: 13px;
+  color: #5e6777;
+}
+.search-field select {
+  font-size: 16px;
+  color: #17243b;
+}
+.search-field input {
+  font-size: 12px;
+}
+.quote {
+  min-width: 0;
+  border-radius: 18px;
+  padding: 0;
+}
+.quote b {
+  display: none;
+}
+.benefits {
+  margin: 61px 0;
+  gap: 15px;
+}
+.benefit {
+  height: auto;
+  padding: 0;
+  background: transparent !important;
+  gap: 15px;
+}
+.benefit > .icon {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  background: #fff !important;
+  border: 1px solid #e6e5e0;
+  color: #162239;
+  font-size: 24px;
+  box-shadow: 0 2px 8px rgba(20, 27, 40, 0.04);
+}
+.benefit h3 {
+  font-size: 17px;
+  color: #17243b;
+  margin: 8px 0 4px;
+}
+.benefit p {
+  font-size: 14px;
+  color: #747986;
+}
+.section-heading {
+  margin: 0 0 23px;
+}
+.section-heading h2 {
+  font:
+    700 31px Arial,
+    sans-serif;
+  letter-spacing: -1.8px;
+  color: #06182b;
+}
+.section-heading p,
+.section-heading .text-button {
+  display: none;
+}
+.destinations {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.destination {
+  height: 280px;
+  border-radius: 14px;
+  border: 0;
+  padding: 22px;
+  background-image:
+    linear-gradient(0deg, rgba(2, 10, 22, 0.82), rgba(2, 10, 22, 0) 67%),
+    url("./imagenes/destinos-coleccion.png");
+  box-shadow: none;
+}
+.destination div {
+  left: 22px;
+  bottom: 18px;
+  max-width: 75%;
+}
+.destination h3 {
+  font:
+    700 23px Arial,
+    sans-serif;
+}
+.destination p {
+  font-size: 14px;
+  line-height: 1.25;
+  margin-top: 7px;
+}
+.destination > span {
+  right: 16px;
+  bottom: 20px;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  padding: 0;
+  font-size: 22px;
+}
+.destination > span b {
+  font-weight: 400;
+}
+.destination.paris,
+.destination.cancun,
+.destination.newyork,
+.destination.punta {
+  background-position: center;
+}
+.all-inclusive {
+  display: none;
+}
+footer {
+  margin-top: 48px;
+  background: #fff;
+  padding: 25px 4.5%;
+  border-color: #e9e6df;
+}
+footer .logo {
+  font-size: 20px;
+}
+footer .logo-mark {
+  display: none;
+}
+.page-banner {
+  height: 0;
+  padding: 0;
+  display: none;
+}
+.packages-page {
+  max-width: none;
+  padding: 31px 3.8% 38px;
+}
+.packages-page > .search-card {
+  display: none;
+}
+.package-layout {
+  grid-template-columns: 272px minmax(500px, 1fr);
+  gap: 45px;
+  max-width: 1420px;
+  margin: 0 auto;
+}
+.package-summary {
+  display: none;
+}
+.filters {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 20px 0;
+}
+.filters h3 {
+  font:
+    700 21px Arial,
+    sans-serif;
+}
+.filters section {
+  padding: 23px 0 12px;
+}
+.filters section > b {
+  font-size: 16px;
+}
+.filters section > p {
+  font-size: 14px;
+  color: #25324b;
+}
+.check {
+  font-size: 15px;
+  margin: 13px 0;
+  color: #566072;
+}
+.result-tabs {
+  height: 54px;
+  margin: 0 0 12px;
+  justify-content: flex-start;
+}
+.result-tabs::before {
+  content: "124 paquetes encontrados";
+  font:
+    700 21px Arial,
+    sans-serif;
+  margin-right: auto;
+}
+.result-tabs button {
+  display: none;
+}
+.result-tabs span {
+  font-size: 0;
+  margin: 0;
+}
+.result-tabs span::after {
+  content: "Ordenar por  Más recomendados ⌄";
+  font-size: 14px;
+  color: #576072;
+  border: 1px solid #e6e5e1;
+  border-radius: 12px;
+  padding: 13px 16px;
+}
+.package-card {
+  grid-template-columns: 282px 1fr 215px;
+  min-height: 224px;
+  border: 1px solid #eceae5;
+  border-radius: 18px;
+  padding: 0;
+  gap: 28px;
+  margin: 12px 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+.package-photo {
+  min-height: 224px;
+  border-radius: 0;
+  background-image: url("./imagenes/destinos-coleccion.png");
+}
+.package-photo span {
+  background: #e8edff;
+  color: #2864cf;
+  display: none;
+}
+.package-info {
+  padding-top: 20px;
+}
+.package-info h2 {
+  font:
+    700 27px Arial,
+    sans-serif;
+  color: #071a36;
+}
+.package-info > p {
+  font-size: 15px;
+  color: #657084;
+  margin: 13px 0;
+}
+.package-info ul {
+  display: flex;
+  gap: 20px;
+}
+.package-info li {
+  display: inline-grid;
+  grid-template-columns: 17px auto;
+  font-size: 14px;
+  margin: 0;
+}
+.package-info li b {
+  font-weight: 500;
+  font-size: 14px;
+}
+.package-info li small {
+  display: none;
+}
+.package-price {
+  border-left: 1px solid #eceae5;
+  padding: 25px 23px;
+}
+.package-price p {
+  font-size: 14px;
+}
+.package-price > b {
+  font:
+    700 31px Arial,
+    sans-serif;
+  color: #071a36;
+  letter-spacing: -1px;
+}
+.package-price > small {
+  font-size: 13px;
+}
+.package-price .primary,
+.package-price .secondary {
+  margin-top: 8px;
+  background: #06182b;
+  color: #fff;
+  border-color: #06182b;
+  border-radius: 14px;
+  padding: 13px 14px;
+}
+.package-price .link {
+  display: none;
+}
+.stepper {
+  height: 101px;
+  background: #fffefa;
+  padding: 18px 5%;
+  justify-content: space-between;
+  border-bottom: 1px solid #eceae5;
+}
+.stepper > div {
+  grid-template-columns: 48px auto;
+  column-gap: 13px;
+}
+.stepper span {
+  width: 48px;
+  height: 48px;
+  font-size: 19px;
+}
+.stepper b {
+  font-size: 16px;
+}
+.stepper small {
+  font-size: 13px;
+}
+.stepper .done span {
+  background: #1765db;
+}
+.checkout-page {
+  max-width: none;
+  background: var(--canvas);
+  padding: 28px 3.5%;
+  grid-template-columns: minmax(0, 1fr) 390px;
+}
+.checkout-section,
+.reservation-summary {
+  border-color: #ece9e3;
+  border-radius: 18px;
+  box-shadow: none;
+  background: #fffefa;
+}
+.checkout-section h2,
+.reservation-summary h2 {
+  font-family: Arial, sans-serif;
+  color: #071a36;
+}
+.reservation-summary {
+  top: 20px;
+}
+.payment-methods button.selected {
+  border-color: #071a36;
+}
+.pay-button {
+  background: #06182b;
+  border-radius: 14px;
+}
+.trips-page {
+  max-width: none;
+  padding: 0 3.2% 34px;
+}
+.trips-tabs {
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 96px;
+  width: 325px;
+  min-height: calc(100vh - 96px);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 34px;
+  background: #fffefa;
+  border-radius: 0;
+  box-shadow: none;
+  border-right: 1px solid #e8e6e1;
+}
+.trips-tabs button {
+  text-align: left;
+  min-height: 58px;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 18px;
+  font-size: 16px;
+}
+.trips-tabs button.active {
+  background: #e8f1ff;
+  border: 0;
+  color: #071a36;
+}
+.trips-layout {
+  display: block;
+  margin-left: 325px;
+  padding-top: 50px;
+}
+.trip-side {
+  display: none;
+}
+.section-heading h2 {
+  font-size: 42px;
+}
+.next-trip {
+  grid-template-columns: 34% 66%;
+  border-radius: 18px;
+}
+.trip-photo {
+  height: 278px;
+}
+.trip-detail {
+  padding: 24px;
+}
+.trip-bottom,
+.itinerary {
+  display: none;
+}
+@media (max-width: 900px) {
+  .navbar {
+    height: auto;
+    gap: 12px;
+    padding: 15px 4%;
+  }
+  .logo {
+    font-size: 29px;
+  }
+  .navbar nav {
+    order: 3;
+    overflow: auto;
+    gap: 21px;
+  }
+  .home-hero {
+    height: 480px;
+  }
+  .hero-copy h1 {
+    font-size: 48px;
+  }
+  .search-card {
+    margin-top: -40px;
+  }
+  .search-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+  .search-field {
+    height: 62px;
+  }
+  .quote {
+    grid-column: span 2;
+    height: 58px;
+  }
+  .benefits {
+    grid-template-columns: 1fr 1fr;
+    margin: 35px 0;
+  }
+  .destinations {
+    grid-template-columns: 1fr 1fr;
+  }
+  .package-layout {
+    display: block;
+  }
+  .filters {
+    display: none;
+  }
+  .package-card {
+    grid-template-columns: 120px 1fr;
+    gap: 15px;
+  }
+  .package-photo {
+    min-height: 175px;
+  }
+  .package-price {
+    grid-column: 1/-1;
+    border-left: 0;
+    border-top: 1px solid #eceae5;
+  }
+  .trips-tabs {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    min-height: 0;
+    flex-direction: row;
+    overflow: auto;
+    padding: 0;
+  }
+  .trips-tabs button {
+    white-space: nowrap;
+  }
+  .trips-layout {
+    margin-left: 0;
+    padding-top: 20px;
+  }
+  .checkout-page {
+    grid-template-columns: 1fr;
+  }
+}

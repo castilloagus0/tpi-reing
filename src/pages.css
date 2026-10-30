@@ -1,0 +1,393 @@
+.page-banner {
+  height: 143px;
+  padding: 22px 3.7%;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(115deg, #f8fcff, #d5f0ff);
+  background-size: cover;
+  background-position: center 50%;
+}
+.page-banner.with-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.78) 34%,
+    rgba(255, 255, 255, 0.1) 69%
+  );
+}
+.page-banner > * {
+  position: relative;
+}
+.page-banner h1 {
+  font-size: 43px;
+  margin: 7px 0;
+}
+.page-banner > p:last-of-type {
+  font-size: 18px;
+  margin: 0;
+  color: #1d3571;
+}
+.page-banner em {
+  position: absolute;
+  right: 28%;
+  top: 33px;
+  color: #0062c9;
+  font: 600 25px/1.1 cursive;
+  transform: rotate(-7deg);
+}
+.packages-page,
+.trips-page,
+.assistance-page {
+  max-width: 1390px;
+  margin: 0 auto;
+  padding: 0 2.7% 30px;
+}
+.packages-page > .search-card {
+  margin-top: -15px;
+}
+.search-card.compact {
+  padding: 11px 14px;
+  margin-bottom: 14px;
+}
+.compact .search-controls {
+  grid-template-columns: 1.1fr 1.1fr 1.4fr 1fr 0.86fr;
+}
+.compact .search-field {
+  height: 58px;
+}
+.package-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(450px, 1fr) 278px;
+  gap: 13px;
+}
+.filters,
+.package-summary,
+.package-card,
+.reservation-summary,
+.checkout-section,
+.next-trip,
+.panel,
+.quick-actions,
+.documents,
+.faq-panel,
+.chat-panel,
+.claim-panel,
+.claims-list {
+  background: #fff;
+  border: 1px solid #e2ebf5;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(17, 58, 120, 0.05);
+}
+.filters {
+  padding: 16px;
+  height: max-content;
+}
+.filter-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filters h3 {
+  font-size: 15px;
+}
+.filters .filter-title button {
+  border: 0;
+  background: transparent;
+  color: #006de0;
+  font-size: 11px;
+}
+.filters section {
+  border-top: 1px solid #e8eef6;
+  padding: 15px 0 7px;
+}
+.filters section > b {
+  font-size: 13px;
+}
+.filters section > p {
+  font-size: 11px;
+  color: #697fa8;
+  margin: 8px 0;
+}
+.filters input[type="range"] {
+  accent-color: #076ee0;
+  width: 100%;
+}
+.range-label {
+  display: flex;
+  justify-content: space-between;
+  color: #607aa8;
+  font-size: 10px;
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6981ad;
+  font-size: 12px;
+  margin: 8px 0;
+}
+.check input {
+  accent-color: #006fe2;
+}
+.check small {
+  margin-left: auto;
+}
+.result-tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #dce9f5;
+  margin-bottom: 11px;
+}
+.result-tabs button {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #28416d;
+  padding: 11px 8px;
+  font-size: 12px;
+}
+.result-tabs button.active {
+  color: #006dde;
+  border-color: #006dde;
+  font-weight: 700;
+}
+.result-tabs span {
+  margin-left: auto;
+  color: #768db5;
+  font-size: 11px;
+}
+.package-card {
+  display: grid;
+  grid-template-columns: 240px 1fr 206px;
+  gap: 14px;
+  padding: 7px;
+  margin-bottom: 10px;
+  min-height: 207px;
+}
+.package-card.chosen {
+  border-color: #91d7ff;
+  box-shadow: 0 5px 18px rgba(0, 126, 225, 0.12);
+}
+.package-photo {
+  border-radius: 9px;
+  min-height: 193px;
+  background: url("./imagenes/destinos-coleccion.png") 18% 60% / cover;
+  position: relative;
+  overflow: hidden;
+}
+.package-photo.punta {
+  background-position: 82% 64%;
+}
+.package-photo.riviera {
+  background-position: 57% 64%;
+}
+.package-photo.varadero {
+  background-position: 5% 48%;
+}
+.package-photo span {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+  border-radius: 5px;
+  background: #08b796;
+  color: #fff;
+  padding: 5px 9px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.package-info h2 {
+  font:
+    800 16px/1.15 Manrope,
+    sans-serif;
+  margin: 5px 0 2px;
+  color: #09205e;
+}
+.package-info > p {
+  font-size: 12px;
+  color: #788db4;
+  margin: 0 0 8px;
+}
+.package-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.package-info li {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  line-height: 1.1;
+  color: #006be0;
+  font-size: 19px;
+  margin: 7px 0;
+}
+.package-info li b,
+.package-info li small {
+  grid-column: 2;
+  color: #18346e;
+  font-size: 12px;
+}
+.package-info li small {
+  margin-top: 2px;
+  color: #617ba9;
+  font-size: 11px;
+}
+.package-price {
+  border-left: 1px solid #e7eef5;
+  padding: 13px 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.package-price p {
+  color: #7389b0;
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+.package-price > b {
+  font:
+    800 27px Manrope,
+    sans-serif;
+  color: #006de0;
+  letter-spacing: -1.5px;
+}
+.package-price > small {
+  color: #6c82ad;
+  font-size: 10px;
+  margin-bottom: 9px;
+}
+.package-price .link {
+  align-self: center;
+  margin-top: 8px;
+}
+.package-summary {
+  padding: 12px;
+  height: max-content;
+  position: sticky;
+  top: 12px;
+}
+.package-summary > h3 {
+  font-size: 14px;
+  display: inline-block;
+}
+.package-summary > .change {
+  float: right;
+  background: 0;
+  border: 0;
+  color: #006fe0;
+  font-size: 11px;
+}
+.summary-cover {
+  height: 108px;
+  border-radius: 8px;
+  margin: 10px 0;
+  background: url("./imagenes/destinos-coleccion.png") center/cover;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  padding: 11px;
+}
+.summary-cover h3,
+.summary-cover p,
+.summary-cover span {
+  position: relative;
+  z-index: 1;
+}
+.summary-cover h3 {
+  font:
+    800 15px Manrope,
+    sans-serif;
+  margin: 40px 0 0;
+}
+.summary-cover p {
+  font-size: 11px;
+  margin: 2px 0;
+}
+.summary-cover span {
+  font-size: 9px;
+  border-radius: 9px;
+  background: #fff;
+  color: #0966cc;
+  padding: 4px 7px;
+}
+.summary-line {
+  display: flex;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5edf5;
+}
+.summary-line > .icon {
+  font-size: 24px;
+}
+.summary-line > div {
+  flex: 1;
+}
+.summary-line b {
+  font-size: 12px;
+}
+.summary-line p {
+  font-size: 11px;
+  color: #6380ad;
+  margin: 2px 0;
+}
+.summary-line .link {
+  font-size: 10px;
+}
+.service-customize {
+  border-top: 1px solid #e5edf5;
+  margin-top: 10px;
+  padding-top: 8px;
+}
+.service-customize label {
+  font-size: 11px;
+  color: #516d9d;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  gap: 5px;
+  margin: 5px 0;
+}
+.service-customize select {
+  grid-column: 2/4;
+  border: 1px solid #dce7f4;
+  border-radius: 5px;
+  font-size: 10px;
+  padding: 4px;
+}
+.service-customize input {
+  accent-color: #006fe0;
+}
+.service-customize b {
+  font-size: 10px;
+  color: #0b2865;
+}
+.total-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 13px 0;
+  padding: 10px;
+  background: #edf8ff;
+}
+.total-box span {
+  font-weight: 700;
+  font-size: 13px;
+}
+.total-box small {
+  display: block;
+  color: #6b82aa;
+  font-weight: 400;
+  font-size: 9px;
+}
+.total-box > b {
+  color: #006de0;
+  font:
+    800 22px Manrope,
+    sans-serif;
+  letter-spacing: -1px;
+}
