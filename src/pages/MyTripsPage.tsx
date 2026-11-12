@@ -1,4 +1,4 @@
-import { ArrowRight, Luggage } from "lucide-react";
+import { ArrowRight, LifeBuoy, Luggage } from "lucide-react";
 import { Footer } from "../components/layout/Footer";
 import { PageHeader } from "../components/layout/PageHeader";
 import { TripHero } from "../components/trips/TripHero";
@@ -25,6 +25,15 @@ export function MyTripsPage() {
           eyebrow="Mis viajes"
           title={`Hola, ${firstName}`}
           subtitle="Todo tu viaje en un solo lugar: vuelos, hotel y documentos."
+          actions={
+            <Button
+              variant="ink"
+              leadingIcon={<LifeBuoy aria-hidden="true" />}
+              onClick={() => navigate("/asistente-viaje")}
+            >
+              Asistencia al Viaje
+            </Button>
+          }
         />
         <div className="container">
           {loading ? (
