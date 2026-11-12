@@ -82,29 +82,14 @@ export const packagesMock: TravelPackage[] = [
 export const initialBookings: Booking[] = [
   {
     id: "MGD8F7K2",
-    createdAt: "2026-03-12T12:00:00.000Z",
+    createdAt: "2026-10-02T12:00:00.000Z",
     status: "Confirmado",
     criteria: {
       ...defaultSearch,
-      destination: "París (CDG)",
-      departure: "2026-05-12",
-      returnDate: "2026-05-19",
+      departure: "2026-12-14",
+      returnDate: "2026-12-21",
     },
-    package: {
-      id: "paris",
-      destination: "París",
-      country: "Francia",
-      subtitle: "Cultura, historia y estilo",
-      airline: "Air France",
-      hotel: "Hôtel Le Marais",
-      stars: 4,
-      mealPlan: "Desayuno incluido",
-      nights: 7,
-      flightPrice: 1398,
-      hotelPrice: 1110,
-      assistancePrice: 120,
-      imageClass: "paris",
-    },
+    package: packagesMock[0],
     travellers: [
       {
         name: "Laura",
@@ -123,6 +108,6 @@ export const initialBookings: Booking[] = [
     ],
     email: "laura.gomez@correo.com",
     phone: "+54 9 11 3456-7890",
-    total: 2918,
+    total: 2838,
   },
 ];

@@ -36,7 +36,7 @@ type TravelState = {
 };
 
 const TravelContext = createContext<TravelState | null>(null);
-const STORAGE = "mundoglobal-travel-state-v1";
+const STORAGE = "mundoglobal-travel-state-v2";
 
 function restoreState(): Partial<{
   criteria: SearchCriteria;
