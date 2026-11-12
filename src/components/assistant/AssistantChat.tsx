@@ -1,6 +1,8 @@
-import { ArrowUp, Sparkles } from "lucide-react";
+import { ArrowUp, Headset, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { OPTION_LABELS, type AssistantContext, type BotReply } from "../../mocks/assistantFlow";
+import { openLiveChat } from "../../utils/liveChat";
+import { Button } from "../ui/Button";
 import { IconButton } from "../ui/IconButton";
 import { useAssistantChat } from "./useAssistantChat";
 
@@ -89,6 +91,15 @@ export function AssistantChat({ context }: { context: AssistantContext }) {
           </h2>
           <p className="assistant__subtitle">Asistente virtual · responde al instante</p>
         </div>
+        <Button
+          variant="secondary"
+          size="sm"
+          className="assistant__human"
+          leadingIcon={<Headset aria-hidden="true" />}
+          onClick={openLiveChat}
+        >
+          <span className="assistant__human-label">Hablar con una persona</span>
+        </Button>
       </header>
 
       <div

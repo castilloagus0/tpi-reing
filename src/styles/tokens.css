@@ -52,6 +52,7 @@
   --color-scrim: rgb(11 18 32 / 0.45);
   --color-image-fade: rgb(11 18 32 / 0.62);
   --color-glass: rgb(255 255 255 / 0.86);
+  --color-on-dark-hover: rgb(255 255 255 / 0.12);
 
   /* ---------- Tipografía ---------- */
   --font-sans:

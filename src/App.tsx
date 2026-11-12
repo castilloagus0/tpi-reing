@@ -1,4 +1,5 @@
 import "./App.css";
+import { LiveChatWidget } from "./components/chat/LiveChatWidget";
 import { Navbar } from "./components/layout/Navbar";
 import { useHashRoute } from "./hooks/useHashRoute";
 import { AssistancePage } from "./pages/AssistancePage";
@@ -20,6 +21,7 @@ function App() {
       {route === "/mis-viajes" && <MyTripsPage />}
       {route === "/asistencia" && <AssistancePage />}
       {route === "/asistente-viaje" && <TravelAssistantPage />}
+      <LiveChatWidget hideLauncher={route === "/asistente-viaje"} />
     </>
   );
 }
