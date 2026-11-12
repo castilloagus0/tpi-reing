@@ -5,7 +5,9 @@ export function EmptyState({
   title,
   text,
   action,
+  titleAs: Title = "h3",
 }: {
+  titleAs?: "h1" | "h2" | "h3";
   icon: ReactNode;
   title: string;
   text?: string;
@@ -16,7 +18,7 @@ export function EmptyState({
       <span className="empty-block__icon" aria-hidden="true">
         {icon}
       </span>
-      <h3 className="empty-block__title">{title}</h3>
+      <Title className="empty-block__title">{title}</Title>
       {text && <p className="empty-block__text">{text}</p>}
       {action}
     </div>

@@ -71,6 +71,13 @@ export function LiveChatWidget({ hideLauncher = false }: { hideLauncher?: boolea
 
   useEffect(() => onOpenLiveChat(openChat), [openChat]);
 
+  // El aviso proactivo se oculta solo para no tapar contenido.
+  useEffect(() => {
+    if (!teaser) return;
+    const timer = window.setTimeout(() => setTeaser(false), 8000);
+    return () => window.clearTimeout(timer);
+  }, [teaser]);
+
   useEffect(() => {
     if (!open) return;
     inputRef.current?.focus({ preventScroll: true });
@@ -150,7 +157,7 @@ export function LiveChatWidget({ hideLauncher = false }: { hideLauncher?: boolea
 
       {open && (
         <section className="lc-panel" role="dialog" aria-modal="false" aria-labelledby={titleId}>
-          <header className="lc-panel__header">
+          <div className="lc-panel__header">
             <Avatar name={AGENT.name} src={AGENT.avatar} online />
             <div className="lc-panel__who">
               <h2 id={titleId} className="lc-panel__name">
@@ -161,7 +168,7 @@ export function LiveChatWidget({ hideLauncher = false }: { hideLauncher?: boolea
               </p>
             </div>
             <IconButton label="Minimizar chat" icon={<ChevronDown />} onClick={close} />
-          </header>
+          </div>
 
           <div
             ref={logRef}

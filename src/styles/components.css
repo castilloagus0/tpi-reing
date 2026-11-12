@@ -236,6 +236,13 @@
   animation: badge-pulse 1.8s var(--ease-out) infinite;
 }
 
+@keyframes msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
 @keyframes badge-pulse {
   from {
     transform: scale(1);

@@ -27,7 +27,7 @@ export function TravelAssistantPage() {
   }, [booking]);
 
   return (
-    <main id="main" className="page assistant-page">
+    <main id="main" className="page assistant-page" tabIndex={-1}>
       <div className="container assistant-page__inner">
         <div className="assistant-page__top">
           <Button

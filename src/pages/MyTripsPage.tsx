@@ -20,7 +20,7 @@ export function MyTripsPage() {
 
   return (
     <>
-      <main id="main" className="page mytrips">
+      <main id="main" className="page mytrips" tabIndex={-1}>
         <PageHeader
           eyebrow="Mis viajes"
           title={`Hola, ${firstName}`}
@@ -40,6 +40,7 @@ export function MyTripsPage() {
             <TripSkeleton />
           ) : !booking ? (
             <EmptyState
+              titleAs="h2"
               icon={<Luggage />}
               title="Todavía no tenés viajes"
               text="Elegí un paquete y tu itinerario va a aparecer acá."

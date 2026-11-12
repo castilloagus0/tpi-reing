@@ -4,6 +4,8 @@
  */
 export interface Media {
   src: string;
+  /** Versión mediana para tarjetas. */
+  medium: string;
   /** Versión chica para miniaturas. */
   thumb: string;
   alt: string;
@@ -14,6 +16,7 @@ const unsplash = (id: string, width = 1200) =>
 
 const photo = (id: string, alt: string): Media => ({
   src: unsplash(id),
+  medium: unsplash(id, 720),
   thumb: unsplash(id, 320),
   alt,
 });

@@ -1,99 +1,127 @@
-import { Checkbox } from "../ui/Checkbox";
+import { Stars } from "../ui/Stars";
+
+export interface FilterOption<T extends string | number> {
+  value: T;
+  count: number;
+}
 
 interface PackageFiltersProps {
+  idPrefix: string;
   maxPrice: number;
+  priceBounds: [number, number];
   airlines: string[];
   meals: string[];
+  stars: number[];
+  airlineOptions: FilterOption<string>[];
+  mealOptions: FilterOption<string>[];
+  starOptions: FilterOption<number>[];
   onMaxPriceChange: (value: number) => void;
   onAirlinesChange: (value: string[]) => void;
   onMealsChange: (value: string[]) => void;
+  onStarsChange: (value: number[]) => void;
   onReset: () => void;
 }
 
-function toggle(value: string, values: string[]): string[] {
-  return values.includes(value)
-    ? values.filter((item) => item !== value)
-    : [...values, value];
+function toggle<T>(value: T, values: T[]): T[] {
+  return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
 }
 
+const price = (n: number) => `USD ${n.toLocaleString("es-AR")}`;
+
 export function PackageFilters({
+  idPrefix,
   maxPrice,
+  priceBounds,
   airlines,
   meals,
+  stars,
+  airlineOptions,
+  mealOptions,
+  starOptions,
   onMaxPriceChange,
   onAirlinesChange,
   onMealsChange,
+  onStarsChange,
   onReset,
 }: PackageFiltersProps) {
+  const active = airlines.length + meals.length + stars.length + (maxPrice < priceBounds[1] ? 1 : 0);
   return (
-    <aside className="filters">
-      <div className="filter-title">
-        <h3>Filtrar resultados</h3>
-        <button onClick={onReset}>Limpiar filtros</button>
+    <div className="filters">
+      <div className="filters__head">
+        <h2 className="filters__title">Filtros</h2>
+        <button type="button" className="btn btn--link btn--sm" onClick={onReset} disabled={!active}>
+          Limpiar{active ? ` (${active})` : ""}
+        </button>
       </div>
-      <section>
-        <b>Precio total del paquete</b>
-        <p>USD 600 – USD {maxPrice.toLocaleString("es-AR")}</p>
+
+      <fieldset className="filters__group">
+        <legend>Precio total</legend>
+        <label className="filters__range" htmlFor={`${idPrefix}-price`}>
+          <span>Hasta</span>
+          <output htmlFor={`${idPrefix}-price`}>
+            {price(maxPrice)}
+          </output>
+        </label>
         <input
-          aria-label="Precio máximo"
+          id={`${idPrefix}-price`}
+          className="range"
           type="range"
-          min="1200"
-          max="4000"
-          step="100"
+          min={priceBounds[0]}
+          max={priceBounds[1]}
+          step={100}
           value={maxPrice}
           onChange={(event) => onMaxPriceChange(Number(event.target.value))}
         />
-        <div className="range-label">
-          <span>USD 600</span>
-          <span>USD 4.000</span>
+        <div className="filters__range-scale" aria-hidden="true">
+          <span>{price(priceBounds[0])}</span>
+          <span>{price(priceBounds[1])}</span>
         </div>
-      </section>
-      <section>
-        <b>Aerolínea</b>
-        {[
-          "Aerolíneas Argentinas",
-          "LATAM Airlines",
-          "Copa Airlines",
-          "Avianca",
-        ].map((name, index) => (
-          <Checkbox
-            key={name}
-            label={name}
-            count={[12, 10, 6, 4][index]}
-            checked={airlines.includes(name)}
-            onChange={() => onAirlinesChange(toggle(name, airlines))}
-          />
-        ))}
-      </section>
-      <section>
-        <b>Categoría de hotel</b>
-        <Checkbox
-          label="5 estrellas"
-          count={18}
-          checked={false}
-          onChange={() => undefined}
-        />
-        <Checkbox
-          label="4 estrellas"
-          count={24}
-          checked={false}
-          onChange={() => undefined}
-        />
-      </section>
-      <section>
-        <b>Régimen de comidas</b>
-        {["Todo incluido", "Media pensión", "Desayuno incluido"].map(
-          (name, index) => (
-            <Checkbox
-              key={name}
-              label={name}
-              count={[28, 10, 6][index]}
-              checked={meals.includes(name)}
-              onChange={() => onMealsChange(toggle(name, meals))}
+      </fieldset>
+
+      <fieldset className="filters__group">
+        <legend>Aerolínea</legend>
+        {airlineOptions.map(({ value, count }) => (
+          <label key={value} className="check-row">
+            <input
+              type="checkbox"
+              checked={airlines.includes(value)}
+              onChange={() => onAirlinesChange(toggle(value, airlines))}
             />
-          ),
-        )}
-      </section>
-    </aside>
+            <span>{value}</span>
+            <span className="check-row__count">{count}</span>
+          </label>
+        ))}
+      </fieldset>
+
+      <fieldset className="filters__group">
+        <legend>Categoría de hotel</legend>
+        {starOptions.map(({ value, count }) => (
+          <label key={value} className="check-row">
+            <input
+              type="checkbox"
+              checked={stars.includes(value)}
+              onChange={() => onStarsChange(toggle(value, stars))}
+            />
+            <Stars count={value} />
+            <span className="check-row__count">{count}</span>
+          </label>
+        ))}
+      </fieldset>
+
+      <fieldset className="filters__group">
+        <legend>Régimen de comidas</legend>
+        {mealOptions.map(({ value, count }) => (
+          <label key={value} className="check-row">
+            <input
+              type="checkbox"
+              checked={meals.includes(value)}
+              onChange={() => onMealsChange(toggle(value, meals))}
+            />
+            <span>{value}</span>
+            <span className="check-row__count">{count}</span>
+          </label>
+        ))}
+      </fieldset>
+    </div>
   );
 }

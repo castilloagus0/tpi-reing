@@ -1,6 +1,12 @@
+import { BedDouble, Check, Moon, Plane, ShieldCheck, UtensilsCrossed } from "lucide-react";
+import { getDestinationImage } from "../../mocks/media";
 import type { TravelPackage } from "../../models";
 import { useTravel } from "../../services/TravelStore";
+import { cx } from "../../utils/cx";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { Badge } from "../ui/Badge";
+import { Button } from "../ui/Button";
+import { Stars } from "../ui/Stars";
 
 export function PackageCard({
   pkg,
@@ -12,48 +18,66 @@ export function PackageCard({
   onSelect: () => void;
 }) {
   const { getTotal } = useTravel();
+  const image = getDestinationImage(pkg.id);
+  const titleId = `pkg-${pkg.id}`;
   return (
-    <article className={`package-card ${selected ? "chosen" : ""}`}>
-      <div className={`package-photo ${pkg.imageClass}`}>
-        <span>{pkg.badge || "Disponible"}</span>
+    <article className={cx("pkg-card", selected && "pkg-card--selected")} aria-labelledby={titleId}>
+      <div className="pkg-card__media">
+        <img src={image.medium} alt={image.alt} loading="lazy" width={720} height={480} />
+        {pkg.badge && (
+          <Badge tone="glass" className="pkg-card__badge">
+            {pkg.badge}
+          </Badge>
+        )}
       </div>
-      <div className="package-info">
-        <h2>
-          {pkg.destination}, {pkg.country}
-        </h2>
-        <p>{pkg.subtitle}</p>
-        <ul>
+      <div className="pkg-card__body">
+        <div className="pkg-card__head">
+          <h3 id={titleId} className="pkg-card__title">
+            {pkg.destination}
+            <span>{pkg.country}</span>
+          </h3>
+          <p className="pkg-card__subtitle">{pkg.subtitle}</p>
+        </div>
+        <ul className="pkg-card__features">
           <li>
-            ✈ <b>Vuelo ida y vuelta</b>
-            <small>{pkg.airline}</small>
+            <Plane aria-hidden="true" />
+            {pkg.airline}
           </li>
           <li>
-            ▦ <b>{pkg.hotel}</b>
-            <small>
-              {"★".repeat(pkg.stars)} · {pkg.mealPlan}
-            </small>
+            <BedDouble aria-hidden="true" />
+            <span>
+              {pkg.hotel} <Stars count={pkg.stars} />
+            </span>
           </li>
           <li>
-            ⬟ <b>Asistencia al viajero</b>
-            <small>MundoGlobal Plus · Cobertura internacional</small>
+            <UtensilsCrossed aria-hidden="true" />
+            {pkg.mealPlan}
+          </li>
+          <li>
+            <Moon aria-hidden="true" />
+            {pkg.nights} noches
+          </li>
+          <li>
+            <ShieldCheck aria-hidden="true" />
+            Asistencia al viajero
           </li>
         </ul>
       </div>
-      <div className="package-price">
+      <div className="pkg-card__price">
         <p>
-          ♟ {pkg.nights} noches &nbsp; ▦ Hotel &nbsp; ✈ Vuelos &nbsp; ▱
-          Traslados
+          <span className="pkg-card__from">Desde</span>
+          <strong className="pkg-card__amount">{formatCurrency(Math.round(getTotal(pkg) / 2))}</strong>
+          <span className="pkg-card__per">por persona · {formatCurrency(getTotal(pkg))} total</span>
         </p>
-        <span>Desde</span>
-        <b>{formatCurrency(Math.round(getTotal(pkg) / 2))}</b>
-        <small>por persona</small>
-        <button
-          className={selected ? "secondary full" : "primary full"}
+        <Button
+          variant={selected ? "secondary" : "primary"}
+          full
+          aria-pressed={selected}
+          leadingIcon={selected ? <Check aria-hidden="true" /> : undefined}
           onClick={onSelect}
         >
-          {selected ? "Paquete seleccionado ✓" : "Ver paquete →"}
-        </button>
-        <button className="link">Ver detalles del paquete⌄</button>
+          {selected ? "Seleccionado" : "Elegir paquete"}
+        </Button>
       </div>
     </article>
   );

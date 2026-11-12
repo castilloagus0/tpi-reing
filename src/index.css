@@ -1,16 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap");
 
-/* Estilos heredados (se migran y eliminan en la Fase 5). */
-@import "./pages.css";
-@import "./flow.css";
-@import "./portal.css";
-@import "./redesign.css";
-
-/* Design system */
 @import "./styles/tokens.css";
 @import "./styles/base.css";
 @import "./styles/components.css";
 @import "./styles/layout.css";
+@import "./styles/pages.css";
 @import "./styles/trips.css";
 @import "./styles/assistant.css";
 @import "./styles/livechat.css";

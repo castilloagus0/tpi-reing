@@ -338,6 +338,7 @@
 }
 
 .tsec__content {
+  container: tsec / inline-size;
   display: grid;
   gap: var(--space-4);
   padding: 0 var(--space-4) var(--space-4);
@@ -671,7 +672,7 @@
   color: var(--color-text);
 }
 
-@media (min-width: 640px) {
+@container tsec (min-width: 34rem) {
   .bpass {
     grid-template-columns: minmax(0, 1fr) auto auto;
   }

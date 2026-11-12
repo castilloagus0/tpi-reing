@@ -50,12 +50,12 @@ function BaseDialog({
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <header className="dialog__header">
+      <div className="dialog__header">
         <h2 id={titleId} className={cx("dialog__title", hideTitle && "sr-only")}>
           {title}
         </h2>
         <IconButton label="Cerrar" icon={<X />} onClick={onClose} />
-      </header>
+      </div>
       <div className="dialog__body">{children}</div>
     </dialog>
   );

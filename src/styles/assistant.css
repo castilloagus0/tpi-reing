@@ -155,12 +155,6 @@
   animation: msg-in var(--duration-slow) var(--ease-out);
 }
 
-@keyframes msg-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-}
 
 .bot-msg {
   display: flex;

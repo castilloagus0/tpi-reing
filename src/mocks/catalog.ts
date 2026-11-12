@@ -3,8 +3,8 @@ import type { Booking, SearchCriteria, TravelPackage } from "../models";
 export const defaultSearch: SearchCriteria = {
   origin: "Buenos Aires (EZE)",
   destination: "Cancún (CUN)",
-  departure: "2026-07-12",
-  returnDate: "2026-07-19",
+  departure: "2027-01-15",
+  returnDate: "2027-01-22",
   adults: 2,
   children: 0,
   type: "Paquete completo",

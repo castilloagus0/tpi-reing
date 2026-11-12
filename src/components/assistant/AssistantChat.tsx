@@ -81,7 +81,7 @@ export function AssistantChat({ context }: { context: AssistantContext }) {
 
   return (
     <section className="assistant" aria-labelledby="assistant-title">
-      <header className="assistant__header">
+      <div className="assistant__header">
         <span className="assistant__logo" aria-hidden="true">
           <Sparkles />
         </span>
@@ -100,7 +100,7 @@ export function AssistantChat({ context }: { context: AssistantContext }) {
         >
           <span className="assistant__human-label">Hablar con una persona</span>
         </Button>
-      </header>
+      </div>
 
       <div
         ref={logRef}
