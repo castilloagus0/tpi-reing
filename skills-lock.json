@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "skills": {
+    "clone-website": {
+      "source": "JCodesMore/ai-website-cloner-template",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/clone-website/SKILL.md",
+      "computedHash": "431913d2eba334d958f5f31c156de325e596bf60b4a40093beab97f01e34d47a"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "83485963700bcf11d5bf78118facb301676b69d918fee2e45a95e7f1a2840f6c"
+    },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "86e265bf3df79c65215f7244d71892ca278370d56dec47a8cc15e8373db3f714"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "4f68ae07187fb0d1fb78c88b503d089da4cf5a9d9625d1f2e425b1590bf96d92"
+    }
+  }
+}
