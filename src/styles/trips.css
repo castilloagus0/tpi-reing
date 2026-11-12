@@ -1021,3 +1021,56 @@
     height: 20rem;
   }
 }
+
+/* ---------- Traslado ---------- */
+.transfer-route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+.transfer-route svg {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--color-primary);
+}
+
+.transfer-facts__wide {
+  grid-column: 1 / -1;
+}
+
+@container tsec (min-width: 34rem) {
+  .transfer-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.driver {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.driver__text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.driver__name {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.driver__role {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}

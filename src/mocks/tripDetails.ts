@@ -56,7 +56,21 @@ export interface HotelEvent extends TripEventBase {
   image: Media;
 }
 
-export type TripEvent = FlightEvent | HotelEvent;
+export interface TransferEvent extends TripEventBase {
+  kind: "transfer";
+  direction: "arrival" | "departure";
+  provider: string;
+  vehicle: string;
+  from: string;
+  to: string;
+  meetingPoint: string;
+  durationMinutes: number;
+  passengers: number;
+  driver: { name: string; phone: string };
+  voucher: string;
+}
+
+export type TripEvent = FlightEvent | HotelEvent | TransferEvent;
 export type TripEventKind = TripEvent["kind"];
 
 const hotelLocations: Record<string, { address: string; lat: number; lng: number }> = {
@@ -110,7 +124,17 @@ export function getTripEvents(booking: Booking): TripEvent[] {
   const returnAt = `${criteria.returnDate}T15:25`;
   const outboundArrival = addMinutes(outboundAt, duration);
 
-  return [
+  const passengers = booking.travellers.length || criteria.adults;
+  const transferBase = {
+    kind: "transfer" as const,
+    provider: "MundoGlobal Transfers",
+    vehicle: "Van privada · hasta 6 pasajeros",
+    durationMinutes: 25,
+    passengers,
+    driver: { name: "Jorge Medina", phone: "+52 998 555 0142" },
+  };
+
+  const events: TripEvent[] = [
     {
       kind: "flight",
       id: "flight-outbound",
@@ -133,6 +157,17 @@ export function getTripEvents(booking: Booking): TripEvent[] {
       live: true,
     },
     {
+      ...transferBase,
+      id: "transfer-arrival",
+      direction: "arrival",
+      title: "Traslado al hotel",
+      at: addMinutes(outboundArrival, 40),
+      from: `Aeropuerto ${airportCode(destination)}`,
+      to: pkg.hotel,
+      meetingPoint: "Salida de Arribos, puerta B. Buscá el cartel con tu apellido.",
+      voucher: `TR-${booking.id.slice(2)}-IN`,
+    },
+    {
       kind: "hotel",
       id: "hotel-stay",
       title: "Check-in en el hotel",
@@ -148,6 +183,17 @@ export function getTripEvents(booking: Booking): TripEvent[] {
       reservationCode: `${pkg.mealPlan === "Todo incluido" ? "AI" : "HT"}-${booking.id.slice(2)}-${pkg.nights}N`,
       allInclusive: pkg.mealPlan === "Todo incluido",
       image: getHotelImage(pkg.id),
+    },
+    {
+      ...transferBase,
+      id: "transfer-departure",
+      direction: "departure",
+      title: "Traslado al aeropuerto",
+      at: addMinutes(returnAt, -180),
+      from: pkg.hotel,
+      to: `Aeropuerto ${airportCode(destination)}`,
+      meetingPoint: "Lobby del hotel. El chofer te espera 10 minutos antes.",
+      voucher: `TR-${booking.id.slice(2)}-OUT`,
     },
     {
       kind: "flight",
@@ -171,4 +217,6 @@ export function getTripEvents(booking: Booking): TripEvent[] {
       live: false,
     },
   ];
+
+  return events.sort((a, b) => a.at.localeCompare(b.at));
 }

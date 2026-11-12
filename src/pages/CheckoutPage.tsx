@@ -6,7 +6,7 @@ import { Footer } from "../components/layout/Footer";
 import { Alert } from "../components/ui/Alert";
 import { Button } from "../components/ui/Button";
 import { Card } from "../components/ui/Card";
-import { TextareaField, TextField } from "../components/ui/Field";
+import { DateField, TextareaField, TextField } from "../components/ui/Field";
 import type { Traveller } from "../models";
 import { useTravel } from "../services/TravelStore";
 import { cx } from "../utils/cx";
@@ -161,7 +161,7 @@ export function CheckoutPage() {
                 <div className="form-grid form-grid--3">
                   <TextField label="Nombre(s)" autoComplete={index ? "off" : "given-name"} value={traveller.name} error={required(traveller.name)} onChange={(e) => updateTraveller(index, "name", e.target.value)} />
                   <TextField label="Apellido(s)" autoComplete={index ? "off" : "family-name"} value={traveller.surname} error={required(traveller.surname)} onChange={(e) => updateTraveller(index, "surname", e.target.value)} />
-                  <TextField label="Fecha de nacimiento" type="date" value={traveller.birthDate} error={required(traveller.birthDate)} onChange={(e) => updateTraveller(index, "birthDate", e.target.value)} />
+                  <DateField label="Fecha de nacimiento" max={new Date().toISOString().slice(0, 10)} value={traveller.birthDate} error={required(traveller.birthDate)} onChange={(e) => updateTraveller(index, "birthDate", e.target.value)} />
                   <TextField label="Nacionalidad" value={traveller.nationality} error={required(traveller.nationality)} onChange={(e) => updateTraveller(index, "nationality", e.target.value)} />
                   <TextField label="Número de documento" value={traveller.document} error={required(traveller.document)} onChange={(e) => updateTraveller(index, "document", e.target.value)} />
                 </div>

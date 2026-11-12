@@ -7,7 +7,7 @@ import { navigate } from "../../utils/navigation";
 import { isSearchCriteriaValid } from "../../utils/validators";
 import { Alert } from "../ui/Alert";
 import { Button } from "../ui/Button";
-import { SelectField, TextField } from "../ui/Field";
+import { DateField, SelectField } from "../ui/Field";
 
 const TRIP_TYPES = ["Paquete completo", "Vuelo + hotel", "Solo vuelo"];
 
@@ -75,15 +75,13 @@ export function TravelSearch({ compact = false }: { compact?: boolean }) {
           <option>París (CDG)</option>
           <option>Nueva York (JFK)</option>
         </SelectField>
-        <TextField
+        <DateField
           label="Salida"
-          type="date"
           value={draft.departure}
           onChange={(e) => update("departure", e.target.value)}
         />
-        <TextField
+        <DateField
           label="Regreso"
-          type="date"
           value={draft.returnDate}
           min={draft.departure}
           error={datesInvalid ? "Debe ser posterior a la salida" : undefined}

@@ -1,4 +1,4 @@
-import { BedDouble, PlaneLanding, PlaneTakeoff, type LucideIcon } from "lucide-react";
+import { BedDouble, CarFront, PlaneLanding, PlaneTakeoff, type LucideIcon } from "lucide-react";
 import type { ComponentType } from "react";
 import type { TripEvent } from "../../mocks/tripDetails";
 import { cx } from "../../utils/cx";
@@ -7,6 +7,7 @@ import { sectionRegistry } from "./sections/registry";
 
 function markerIcon(event: TripEvent): LucideIcon {
   if (event.kind === "hotel") return BedDouble;
+  if (event.kind === "transfer") return CarFront;
   return event.direction === "return" ? PlaneLanding : PlaneTakeoff;
 }
 

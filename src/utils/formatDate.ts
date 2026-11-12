@@ -1,13 +1,19 @@
 const toDate = (value: string) =>
   new Date(value.includes("T") ? value : `${value}T12:00:00`);
 
-/** "14 dic 2026" */
-export const formatDate = (value: string): string =>
-  new Intl.DateTimeFormat("es-AR", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  }).format(toDate(value));
+const shortDate = new Intl.DateTimeFormat("es-AR", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+});
+
+/** "14 dic 2026" (sin los "de" que agregan algunos navegadores). */
+export const formatDate = (value: string): string => {
+  const parts = shortDate.formatToParts(toDate(value));
+  const get = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((part) => part.type === type)?.value ?? "";
+  return `${get("day")} ${get("month").replace(".", "")} ${get("year")}`;
+};
 
 /** "09:40" */
 export const formatTime = (value: string | Date): string =>

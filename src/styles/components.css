@@ -480,6 +480,64 @@ select.control {
   background-repeat: no-repeat;
 }
 
+/* ---------- Fecha localizada ---------- */
+.date-control {
+  position: relative;
+}
+
+.date-control__input {
+  position: relative;
+  color: transparent;
+  cursor: pointer;
+}
+
+.date-control__input::-webkit-datetime-edit {
+  color: transparent;
+}
+
+/* El indicador del calendario cubre todo el campo: un clic en
+   cualquier parte abre el selector nativo. */
+.date-control__input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.date-control__display {
+  position: absolute;
+  inset: 0 var(--space-10) 0 var(--space-3);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: var(--text-base);
+  pointer-events: none;
+}
+
+.date-control__icon {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  width: 1.125rem;
+  height: 1.125rem;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.date-control.is-typing .date-control__input,
+.date-control.is-typing .date-control__input::-webkit-datetime-edit {
+  color: var(--color-text);
+}
+
+.date-control.is-typing .date-control__display {
+  visibility: hidden;
+}
+
 .check-row {
   display: flex;
   align-items: center;

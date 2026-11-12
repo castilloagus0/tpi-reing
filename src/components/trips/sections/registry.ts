@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 import type { TripEvent, TripEventKind } from "../../../mocks/tripDetails";
 import { FlightSection } from "./FlightSection";
 import { HotelSection } from "./HotelSection";
+import { TransferSection } from "./TransferSection";
 
 type SectionComponent<K extends TripEventKind> = ComponentType<{
   event: Extract<TripEvent, { kind: K }>;
@@ -16,4 +17,5 @@ type SectionComponent<K extends TripEventKind> = ComponentType<{
 export const sectionRegistry: { [K in TripEventKind]: SectionComponent<K> } = {
   flight: FlightSection,
   hotel: HotelSection,
+  transfer: TransferSection,
 };
